@@ -2,212 +2,421 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Соглашение | ON1X VPN</title>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;500;700;800&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Юридическая информация — ON1X VPN</title>
     <style>
         :root {
-            --bg: #030712;
-            --accent-1: #4f46e5;
-            --accent-2: #9333ea;
-            --glass: rgba(17, 24, 39, 0.7);
-            --text-white: #f8fafc;
-            --text-dim: #94a3b8;
+            /* Темная тема — Необрутализм (Графит + Токсичный лайм) */
+            --bg-main: #0b0f17;
+            --card-bg: #1e293b;
+            --card-border: #000000;
+            --shadow-color: #000000;
+            --text-title: #ffffff;
+            --text-body: #f8fafc;
+            --text-sub: #94a3b8;
+            
+            --btn-primary-bg: #ccff00;
+            /* Яркий акцент */
+            --btn-primary-text: #000000;
+            --btn-secondary-bg: #0f172a;
+            --btn-secondary-border: #000000;
+            
+            --slider-bg: #1e293b;
+            --slider-thumb: #ccff00;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        [data-theme="light"] {
+            /* Светлая тема — Газетный брутализм */
+            --bg-main: #f1f5f9;
+            --card-bg: #ffffff;
+            --card-border: #000000;
+            --shadow-color: #000000;
+            --text-title: #000000;
+            --text-body: #0f172a;
+            --text-sub: #64748b;
+            
+            --btn-primary-bg: #000000;
+            --btn-primary-text: #ffffff;
+            --btn-secondary-bg: #f8fafc;
+            --btn-secondary-border: #000000;
+            --slider-bg: #ffffff;
+            --slider-thumb: #000000;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
 
         body {
-            font-family: 'Manrope', sans-serif;
-            background-color: var(--bg);
-            color: var(--text-white);
-            overflow-x: hidden;
-            line-height: 1.6;
+            background-color: var(--bg-main);
+            color: var(--text-body);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 40px 24px;
+            transition: background 0.3s ease;
         }
 
-        .blob {
-            position: fixed;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, var(--accent-1), transparent 70%);
-            filter: blur(80px);
-            opacity: 0.3;
-            z-index: -1;
-        }
-        .blob-1 { top: -100px; left: -100px; }
-        .blob-2 { bottom: -100px; right: -100px; background: radial-gradient(circle, var(--accent-2), transparent 70%); }
-
-        .wrapper {
-            max-width: 900px;
-            margin: 80px auto;
-            padding: 0 20px;
+        /* Переключатель темы */
+        .theme-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            margin-bottom: 40px;
         }
 
-        .glass-panel {
-            background: var(--glass);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 40px;
-            padding: 80px;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        .theme-switch {
+            position: relative;
+            width: 64px;
+            height: 34px;
+            background: var(--slider-bg);
+            border: 2px solid var(--card-border);
+            border-radius: 0px;
+            /* Жесткие углы */
+            box-shadow: 3px 3px 0px var(--shadow-color);
+            cursor: pointer;
+            padding: 3px;
         }
 
-        header {
+        .theme-checkbox {
+            display: none;
+        }
+
+        .theme-handle {
+            width: 24px;
+            height: 24px;
+            background-color: var(--slider-thumb);
+            border: 2px solid var(--card-border);
+            transition: transform 0.2s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+        }
+
+        .theme-checkbox:checked + .theme-switch .theme-handle {
+            transform: translateX(30px);
+        }
+
+        /* Контейнер — увеличен для удобства чтения юридических текстов */
+        .container {
+            width: 100%;
+            max-width: 480px;
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+        }
+
+        /* Шапка */
+        .brand-header {
             text-align: center;
-            margin-bottom: 60px;
         }
 
-        .badge {
-            display: inline-block;
-            padding: 6px 16px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 100px;
-            font-size: 12px;
+        .brand-title {
+            font-size: 42px;
+            font-weight: 900;
+            letter-spacing: -1px;
+            color: var(--text-title);
             text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--accent-1);
-            margin-bottom: 20px;
-            font-weight: 700;
+            -webkit-text-stroke: 1px var(--card-border);
         }
 
-        h1 {
-            font-size: clamp(2rem, 5vw, 3.5rem);
+        .brand-slogan {
+            display: inline-block;
+            font-size: 12px;
+            background: var(--btn-primary-bg);
+            color: var(--btn-primary-text);
+            border: 2px solid var(--card-border);
+            padding: 2px 8px;
             font-weight: 800;
-            letter-spacing: -0.05em;
-            background: linear-gradient(to right, #fff, #94a3b8);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 6px;
+            box-shadow: 2px 2px 0px var(--shadow-color);
         }
 
-        .intro-box {
-            font-size: 18px;
-            color: var(--text-dim);
-            margin-bottom: 60px;
+        /* Навигация (Табы) в брутальном стиле */
+        .tabs-nav {
+            display: flex;
+            gap: 12px;
+            width: 100%;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 14px 10px;
+            font-size: 11px;
+            font-weight: 800;
             text-align: center;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
+            text-transform: uppercase;
+            border: 2px solid var(--card-border);
+            background: var(--btn-secondary-bg);
+            color: var(--text-body);
+            cursor: pointer;
+            box-shadow: 4px 4px 0px var(--shadow-color);
+            transition: transform 0.1s ease, box-shadow 0.1s ease;
         }
 
-        section { margin-bottom: 60px; }
+        .tab-btn.active {
+            background: var(--btn-primary-bg);
+            color: var(--btn-primary-text);
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px var(--shadow-color);
+        }
 
-        h2 {
-            font-size: 24px;
+        /* Жесткие брутальные блоки */
+        .section-box {
+            background: var(--card-bg);
+            border: 3px solid var(--card-border);
+            border-radius: 0px;
+            padding: 24px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            box-shadow: 8px 8px 0px var(--shadow-color);
+            position: relative;
+        }
+
+        .document-content {
+            display: none;
+        }
+
+        .document-content.active {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        /* Стилизация текста документов */
+        .doc-intro {
+            font-size: 14px;
+            line-height: 1.6;
+            color: var(--text-body);
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .doc-section-title {
+            font-size: 14px;
+            font-weight: 900;
+            color: var(--text-title);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 2px dashed var(--card-border);
+            padding-bottom: 4px;
+            margin-top: 12px;
+        }
+
+        .doc-text {
+            font-size: 14px;
+            line-height: 1.6;
+            color: var(--text-body);
+        }
+
+        .doc-list {
+            padding-left: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .doc-list li {
+            font-size: 14px;
+            line-height: 1.5;
+            color: var(--text-body);
+        }
+
+        .doc-sublist-title {
+            font-size: 14px;
             font-weight: 700;
-            margin-bottom: 25px;
+            color: var(--text-title);
+            margin-top: 6px;
+        }
+
+        /* Кнопка возврата */
+        .btn-back {
             display: flex;
             align-items: center;
-            gap: 15px;
-        }
-
-        h2::before {
-            content: "";
-            width: 30px;
-            height: 2px;
-            background: linear-gradient(to right, var(--accent-1), transparent);
-        }
-
-        p { color: var(--text-dim); font-size: 16px; margin-bottom: 15px; }
-
-        .list-paragraph {
-            color: var(--text-dim);
-            font-size: 16px;
-            margin-bottom: 10px;
-            padding-left: 10px;
-        }
-
-        footer {
-            text-align: center;
-            padding: 40px 0;
-            color: var(--text-dim);
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            padding: 16px 20px;
             font-size: 14px;
+            font-weight: 800;
+            text-decoration: none;
+            text-transform: uppercase;
+            border: 2px solid var(--card-border);
+            background: var(--btn-secondary-bg);
+            color: var(--text-body);
+            box-shadow: 4px 4px 0px var(--shadow-color);
+            transition: transform 0.1s ease, box-shadow 0.1s ease;
         }
 
-        a { color: var(--accent-1); text-decoration: none; }
-        strong { color: #fff; }
+        .btn-back:active {
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px var(--shadow-color);
+        }
 
-        @media (max-width: 768px) {
-            .glass-panel { padding: 40px 25px; }
-            h1 { font-size: 28px; }
+        .btn-back svg {
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
         }
     </style>
 </head>
 <body>
 
-    <div class="blob blob-1"></div>
-    <div class="blob blob-2"></div>
-
-    <div class="wrapper">
-        <header>
-            <div class="badge">ПОЛЬЗОВАТЕЛЬСКОЕ СОГЛАШЕНИЕ</div>
-            <h1>ON1X VPN</h1>
-            <p style="color: var(--text-dim); margin-top: 10px;">Дата последнего обновления: 16.01.2026</p>
-        </header>
-
-        <main class="glass-panel">
-            <div class="intro-box">
-                Настоящее Пользовательское соглашение (далее — «Соглашение») регулирует отношения между администрацией сервиса <strong>ON1X VPN</strong> (далее — «Сервис»), доступного через Telegram-бот https://t.me/on1xVPN_bot, и физическим лицом, использующим Сервис (далее — «Пользователь»).
-                <br><br>
-                Использование Сервиса означает полное и безоговорочное принятие Пользователем условий настоящего Соглашения.
-            </div>
-
-            <section>
-                <h2>1. ПРЕДМЕТ СОГЛАШЕНИЯ</h2>
-                <p>1.1. Сервис предоставляет Пользователю доступ к виртуальной частной сети (VPN) для обеспечения конфиденциальности и безопасности в сети Интернет.</p>
-                <p>1.2. Технические характеристики, тарифы и способы оплаты доступны непосредственно в интерфейсе Telegram-бота.</p>
-            </section>
-
-            <section>
-                <h2>2. ПРАВА И ОБЯЗАННОСТИ СТОРОН</h2>
-                <p><strong>2.1. Сервис обязуется:</strong></p>
-                <p class="list-paragraph">— Обеспечивать работоспособность серверов и доступность услуг в меру технических возможностей.</p>
-                <p class="list-paragraph">— Обеспечивать конфиденциальность данных Пользователя в соответствии с Политикой конфиденциальности.</p>
-                
-                <p style="margin-top: 20px;"><strong>2.2. Пользователь обязуется:</strong></p>
-                <p class="list-paragraph">— Использовать Сервис только в законных целях.</p>
-                <p class="list-paragraph">— Не использовать Сервис для совершения противоправных действий, включая, но не ограничиваясь: хакерские атаки, распространение вредоносного ПО, спам, нарушение авторских прав и распространение запрещенного законодательством контента.</p>
-                <p class="list-paragraph">— Не совершать действий, направленных на дестабилизацию работы Сервиса.</p>
-            </section>
-
-            <section>
-                <h2>3. ПОРЯДОК ОПЛАТЫ И ВОЗВРАТА СРЕДСТВ</h2>
-                <p>3.1. Доступ к платным функциям Сервиса предоставляется на условиях 100% предоплате согласно выбранному тарифу.</p>
-                <p>3.2. Все транзакции обрабатываются через сторонние платежные шлюзы. Сервис не хранит данные банковских карт Пользователей.</p>
-                <p>3.3. Политика возврата: Ввиду цифровой природы услуги, возврат денежных средств за активированную подписку не предусмотрен, за исключением случаев длительной неработоспособности Сервиса по вине администрации.</p>
-            </section>
-
-            <section>
-                <h2>4. ОТКАЗ ОТ ОТВЕТСТВЕННОСТИ</h2>
-                <p>4.1. Услуги предоставляются по принципу «как есть» (as is). Администрация не гарантирует, что Сервис будет соответствовать всем ожиданиям Пользователя или работать непрерывно.</p>
-                <p>4.2. Сервис не несет ответственности за: качество интернет-соединения на стороне Пользователя; прямые или косвенные убытки, возникшие в результате использования или невозможности использования Сервиса; блокировку Сервиса государственными органами в стране нахождения Пользователя.</p>
-            </section>
-
-            <section>
-                <h2>5. КОНФИДЕНЦИАЛЬНОСТЬ (NO-LOGS POLICY)</h2>
-                <p>5.1. ON1X VPN придерживается политики «без логов» в отношении активности Пользователей. Мы не собираем и не храним данные о том, какие ресурсы посещает Пользователь и какой трафик передает через наши серверы.</p>
-                <p>5.2. Для работы Сервиса собираются минимально необходимые данные пользователя: Telegram ID и история транзакций внутри бота.</p>
-            </section>
-
-            <section>
-                <h2>6. ИЗМЕНЕНИЕ УСЛОВИЙ</h2>
-                <p>6.1. Администрация оставляет за собой право изменять настоящее Соглашение в любое время без предварительного уведомления.</p>
-                <p>6.2. Продолжение использования Сервиса после внесения изменений означает согласие Пользователя с новой редакцией Соглашения.</p>
-            </section>
-
-            <section>
-                <h2>7. ЗАКЛЮЧИТЕЛЬНЫЕ ПОЛОЖЕНИЯ</h2>
-                <p>7.1. Настоящее Соглашение является юридически значимым договором между Пользователем и Сервисом.</p>
-                <p>7.2. В случае возникновения вопросов или претензий, Пользователь может обратиться в службу поддержки через контактные данные, указанные в Telegram-бота.</p>
-            </section>
-        </main>
-
-        <footer>
-            &copy; 2026 ON1X VPN. Все права защищены.
-        </footer>
+    <div class="theme-container">
+        <input type="checkbox" id="themeInput" class="theme-checkbox">
+        <label for="themeInput" class="theme-switch">
+            <div class="theme-handle"></div>
+        </label>
     </div>
 
+    <div class="container">
+        
+        <header class="brand-header">
+            <h1 class="brand-title">ON1X VPN</h1>
+            <p class="brand-slogan">Документы</p>
+        </header>
+
+        <nav class="tabs-nav">
+            <button class="tab-btn active" onclick="switchDoc('privacy')">Конфиденциальность</button>
+            <button class="tab-btn" onclick="switchDoc('terms')">Соглашение</button>
+        </nav>
+
+        <main class="section-box">
+            
+            <div id="privacy" class="document-content active">
+                <p class="doc-intro">Сервис ON1X VPN (далее — «Сервис») уважает ваше право на конфиденциальность. Данная Политика объясняет, какие данные мы собираем, как мы их используем и почему вы можете быть уверены в своей безопасности при использовании нашего Telegram-бота и VPN-узлов.</p>
+                
+                <div class="doc-section-title">1. Политика отсутствия логов (No-Logs Policy)</div>
+                <p class="doc-text">Мы придерживаемся строгой политики отсутствия логов. Это означает:</p>
+                <ul class="doc-list">
+                    <li>Мы НЕ собираем и не храним информацию о ваших действиях в интернете (посещенные сайты, поисковые запросы, скачанные файлы).</li>
+                    <li>Мы НЕ регистрируем ваш реальный IP-адрес при подключении к нашим VPN-серверам.</li>
+                    <li>Мы НЕ храним информацию о том, какой контент вы передаете или получаете через Сервис.</li>
+                </ul>
+
+                <div class="doc-section-title">2. Какие данные мы собираем?</div>
+                <p class="doc-text">Для функционирования личного кабинета в Telegram и обеспечения доступа к подписке мы собираем только необходимый минимум:</p>
+                <ul class="doc-list">
+                    <li><strong>Telegram ID:</strong> Уникальный идентификатор вашего аккаунта в Telegram. Он нужен для привязки подписки к вашему профилю.</li>
+                    <li><strong>История транзакций:</strong> Данные о пополнении баланса и покупке тарифов внутри бота (сумма, дата, статус оплаты).</li>
+                </ul>
+
+                <div class="doc-section-title">3. Использование данных</div>
+                <p class="doc-text">Мы используем собранные данные исключительно для:</p>
+                <ul class="doc-list">
+                    <li>Обеспечения доступа к услугам VPN.</li>
+                    <li>Обработки платежей и продления подписок.</li>
+                    <li>Оказания технической поддержки по вашему запросу.</li>
+                    <li>Рассылки уведомлений об истечении срока действия подписки или важных изменениях в работе Сервиса через Telegram.</li>
+                </ul>
+
+                <div class="doc-section-title">4. Передача данных третьим лицам</div>
+                <p class="doc-text"><strong>Платежные системы:</strong> При совершении оплаты данные обрабатываются сертифицированными платежными провайдерами. Мы не имеем доступа к реквизитам ваших банковских карт.</p>
+                <p class="doc-text"><strong>Правоохранительные органы:</strong> Мы не храним историю ваших действий и реальные IP-адреса, поэтому нам технически нечего передать по запросу третьих лиц в отношении вашей интернет-активности.</p>
+
+                <div class="doc-section-title">5. Защита и безопасность</div>
+                <p class="doc-text">Мы используем современные протоколы шифрования и защищенные серверы для обеспечения безопасности данных. Весь трафик между вашим устройством и VPN-сервером зашифрован, что делает его недоступным для перехвата интернет-провайдером или злоумышленниками.</p>
+
+                <div class="doc-section-title">6. Ваши права</div>
+                <p class="doc-text">Вы имеете право:</p>
+                <ul class="doc-list">
+                    <li>В любой момент прекратить использование Сервиса.</li>
+                    <li>Запросить удаление вашего профиля и всех связанных данных из базы данных бота (для этого обратитесь в поддержку).</li>
+                </ul>
+
+                <div class="doc-section-title">7. Изменения в политике</div>
+                <p class="doc-text">Мы можем обновлять данную Политику по мере развития Сервиса. Информация об обновлениях будет публиковаться в Telegram-боте ON1X VPN.</p>
+            </div>
+
+            <div id="terms" class="document-content">
+                <p class="doc-intro">Настоящее Пользовательское соглашение (далее — «Соглашение») регулирует отношения между администрацией сервиса ON1X VPN (далее — «Сервис»), доступного через Telegram-бот https://t.me/on1xVPN_bot, и физическим лицом, использующим Сервис (далее — «Пользователь»). Использование Сервиса означает полное и безоговорочное принятие Пользователем условий настоящего Соглашения.</p>
+                
+                <div class="doc-section-title">1. Предмет соглашения</div>
+                <p class="doc-text">1.1. Сервис предоставляет Пользователю доступ к виртуальной частной сети (VPN) для обеспечения конфиденциальности и безопасности в сети Интернет.</p>
+                <p class="doc-text">1.2. Технические характеристики, тарифы и способы оплаты доступны непосредственно в интерфейсе Telegram-бота.</p>
+
+                <div class="doc-section-title">2. Права и обязанности сторон</div>
+                <p class="doc-sublist-title">2.1. Сервис обязуется:</p>
+                <ul class="doc-list">
+                    <li>Обеспечивать работоспособность серверов и доступность услуг в меру технических возможностей.</li>
+                    <li>Обеспечивать конфиденциальность данных Пользователя в соответствии с Политикой конфиденциальности.</li>
+                </ul>
+                <p class="doc-sublist-title">2.2. Пользователь обязуется:</p>
+                <ul class="doc-list">
+                    <li>Использовать Сервис только в законных целях.</li>
+                    <li>Не использовать Сервис для совершения противоправных действий, включая, но не ограничиваясь: хакерские атаки, распространение вредоносного ПО, спам, нарушение авторских прав и распространение запрещенного законодательством контента.</li>
+                    <li>Не совершать действий, направленных на дестабилизацию работы Сервиса.</li>
+                </ul>
+
+                <div class="doc-section-title">3. Порядок оплаты и возврата средств</div>
+                <p class="doc-text">3.1. Доступ к платным функциям Сервиса предоставляется на условиях 100% предоплате согласно выбранному тарифу.</p>
+                <p class="doc-text">3.2. Все транзакции обрабатываются через сторонние платежные шлюзы. Сервис не хранит данные банковских карт Пользователей.</p>
+                <p class="doc-text">3.3. <strong>Политика возврата:</strong> Ввиду цифровой природы услуги, возврат денежных средств за активированную подписку не предусмотрен, за исключением случаев длительной неработоспособности Сервиса по вине администрации.</p>
+
+                <div class="doc-section-title">4. Отказ от ответственности</div>
+                <p class="doc-text">4.1. Услуги предоставляются по принципу «как есть» (as is). Администрация не гарантирует, что Сервис будет соответствовать всем ожиданиям Пользователя или работать непрерывно.</p>
+                <p class="doc-text">4.2. Сервис не несет ответственности за: качество интернет-соединения на стороне Пользователя; прямые или косвенные убытки, возникшие в результате использования или невозможности использования Сервиса; блокировку Сервиса государственными органами в стране нахождения Пользователя.</p>
+
+                <div class="doc-section-title">5. Конфиденциальность (No-Logs Policy)</div>
+                <p class="doc-text">5.1. ON1X VPN придерживается политики «без логов» в отношении активности Пользователей. Мы не собираем и не храним данные о том, какие ресурсы посещает Пользователь и какой трафик передает через наши серверы.</p>
+                <p class="doc-text">5.2. Для работы Сервиса собираются минимально необходимые данные пользователя: Telegram ID и история транзакций внутри бота.</p>
+
+                <div class="doc-section-title">6. Изменение условий</div>
+                <p class="doc-text">6.1. Администрация оставляет за собой право изменять настоящее Соглашение в любое время без предварительного уведомления.</p>
+                <p class="doc-text">6.2. Продолжение использования Сервиса после внесения изменений означает согласие Пользователя с новой редакцией Соглашения.</p>
+
+                <div class="doc-section-title">7. Заключительные положения</div>
+                <p class="doc-text">7.1. Настоящее Соглашение является юридически значимым договором между Пользователем и Сервисом.</p>
+                <p class="doc-text">7.2. В случае возникновения вопросов или претензий, Пользователь может обратиться в службу поддержки через контактные данные, указанные в Telegram-бота.</p>
+            </div>
+
+        </main>
+
+        <a href="https://t.me/on1xVPN_bot" class="btn-back">
+            <svg width="16" height="16" viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            <span>Вернуться в бот</span>
+        </a>
+
+    </div>
+
+    <script>
+        // Переключатель вкладок документов
+        function switchDoc(docId) {
+            document.querySelectorAll('.document-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+            
+            document.getElementById(docId).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+
+        // Оригинальный скрипт переключения темы
+        const themeInput = document.getElementById('themeInput');
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        if (savedTheme === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+            themeInput.checked = true;
+        } else {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            themeInput.checked = false;
+        }
+
+        themeInput.addEventListener('change', () => {
+            if (themeInput.checked) {
+                document.documentElement.setAttribute('data-theme', 'light');
+                localStorage.setItem('theme', 'light');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+    </script>
 </body>
 </html>
