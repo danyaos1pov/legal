@@ -23,6 +23,7 @@
             
             --slider-bg: #1e293b;
             --slider-thumb: #ccff00;
+            --icon-color: #ffffff;
         }
 
         [data-theme="light"] {
@@ -39,8 +40,10 @@
             --btn-primary-text: #ffffff;
             --btn-secondary-bg: #f8fafc;
             --btn-secondary-border: #000000;
+            
             --slider-bg: #ffffff;
             --slider-thumb: #000000;
+            --icon-color: #000000;
         }
 
         * {
@@ -62,7 +65,7 @@
             transition: background 0.3s ease;
         }
 
-        /* Переключатель темы */
+        /* Кастомный переключатель темы с иконками */
         .theme-container {
             display: flex;
             justify-content: center;
@@ -73,34 +76,52 @@
 
         .theme-switch {
             position: relative;
-            width: 64px;
-            height: 34px;
+            width: 76px;
+            height: 38px;
             background: var(--slider-bg);
             border: 2px solid var(--card-border);
             border-radius: 0px;
-            /* Жесткие углы */
             box-shadow: 3px 3px 0px var(--shadow-color);
             cursor: pointer;
-            padding: 3px;
+            padding: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: background 0.3s ease;
         }
 
         .theme-checkbox {
             display: none;
         }
 
+        .switch-icon {
+            width: 18px;
+            height: 18px;
+            fill: none;
+            stroke: var(--icon-color);
+            stroke-width: 2.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            z-index: 1;
+            transition: stroke 0.3s ease;
+            margin: 0 4px;
+        }
+
         .theme-handle {
-            width: 24px;
-            height: 24px;
+            position: absolute;
+            left: 4px;
+            width: 26px;
+            height: 26px;
             background-color: var(--slider-thumb);
             border: 2px solid var(--card-border);
             transition: transform 0.2s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+            z-index: 2;
         }
 
         .theme-checkbox:checked + .theme-switch .theme-handle {
-            transform: translateX(30px);
+            transform: translateX(38px);
         }
 
-        /* Контейнер — увеличен для удобства чтения юридических текстов */
         .container {
             width: 100%;
             max-width: 480px;
@@ -109,7 +130,6 @@
             gap: 28px;
         }
 
-        /* Шапка */
         .brand-header {
             text-align: center;
         }
@@ -137,7 +157,6 @@
             box-shadow: 2px 2px 0px var(--shadow-color);
         }
 
-        /* Навигация (Табы) в брутальном стиле */
         .tabs-nav {
             display: flex;
             gap: 12px;
@@ -166,7 +185,6 @@
             box-shadow: 2px 2px 0px var(--shadow-color);
         }
 
-        /* Жесткие брутальные блоки */
         .section-box {
             background: var(--card-bg);
             border: 3px solid var(--card-border);
@@ -189,7 +207,6 @@
             gap: 16px;
         }
 
-        /* Стилизация текста документов */
         .doc-intro {
             font-size: 14px;
             line-height: 1.6;
@@ -235,7 +252,6 @@
             margin-top: 6px;
         }
 
-        /* Кнопка возврата */
         .btn-back {
             display: flex;
             align-items: center;
@@ -273,12 +289,13 @@
     <div class="theme-container">
         <input type="checkbox" id="themeInput" class="theme-checkbox">
         <label for="themeInput" class="theme-switch">
+            <svg class="switch-icon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
             <div class="theme-handle"></div>
+            <svg class="switch-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
         </label>
     </div>
 
     <div class="container">
-        
         <header class="brand-header">
             <h1 class="brand-title">ON1X VPN</h1>
             <p class="brand-slogan">Документы</p>
@@ -290,7 +307,6 @@
         </nav>
 
         <main class="section-box">
-            
             <div id="privacy" class="document-content active">
                 <p class="doc-intro">Сервис ON1X VPN (далее — «Сервис») уважает ваше право на конфиденциальность. Данная Политика объясняет, какие данные мы собираем, как мы их используем и почему вы можете быть уверены в своей безопасности при использовании нашего Telegram-бота и VPN-узлов.</p>
                 
@@ -377,7 +393,6 @@
                 <p class="doc-text">7.1. Настоящее Соглашение является юридически значимым договором между Пользователем и Сервисом.</p>
                 <p class="doc-text">7.2. В случае возникновения вопросов или претензий, Пользователь может обратиться в службу поддержки через контактные данные, указанные в Telegram-бота.</p>
             </div>
-
         </main>
 
         <a href="https://t.me/on1xVPN_bot" class="btn-back">
